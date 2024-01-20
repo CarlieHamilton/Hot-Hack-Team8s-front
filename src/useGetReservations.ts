@@ -16,7 +16,7 @@ async function getReservations(userId: string) {
   );
 
   const reservationQuery = query(
-    collection(db, "hotelreservations"),
+    collection(db, "hotelReservations"),
     where("band", "in", bands),
   );
   const reservationSnapshot = await getDocs(reservationQuery);
