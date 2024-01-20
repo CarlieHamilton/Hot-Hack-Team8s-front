@@ -12,6 +12,7 @@ export default function UploadCSV() {
 
   const handleUpload = (data: CSVDataType[]) => {
     const processedData = preprocessData(data[1]);
+    console.log(processedData, 'process-data');
   };
 
   return (
