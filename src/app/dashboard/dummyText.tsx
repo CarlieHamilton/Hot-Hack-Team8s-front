@@ -1,0 +1,43 @@
+const hotelData = [
+  {
+    date: new Date(),
+    band: "abc",
+    city: "Spokane",
+    state: "Washington",
+    king: 2,
+    twin: 4,
+    suite: 0,
+    roomNightTotal: 6,
+    spend: 774,
+    roomMarketAverage: 187,
+    savings: 348,
+  },
+  {
+    date: new Date(),
+    band: "efg",
+    city: "Portland",
+    state: "Oregon",
+    king: 2,
+    twin: 4,
+    suite: 0,
+    roomNightTotal: 6,
+    spend: 900,
+    roomMarketAverage: 195,
+    savings: 270,
+  },
+  {
+    date: new Date(),
+    band: "xyz",
+    city: "Seattle",
+    state: "Washington",
+    king: 2,
+    twin: 4,
+    suite: 0,
+    roomNightTotal: 6,
+    spend: 873,
+    roomMarketAverage: 200,
+    savings: 327,
+  },
+];
+
+export default hotelData;
