@@ -2,11 +2,18 @@
 
 import { DragEvent, useState } from "react";
 import { useCSVReader, formatFileSize } from "react-papaparse";
+import { CSVDataType } from "../utils/HotelData";
+import { preprocessData } from "../utils/PreProcessData";
 
 export default function UploadCSV() {
   const { CSVReader } = useCSVReader();
   const [zoneHover, setZoneHover] = useState(false);
   const [uploadedCsv, setUploadedCsv] = useState([]);
+
+  const handleUpload = (data: CSVDataType[]) => {
+    const processedData = preprocessData(data[1]);
+    console.log(processedData, 'process-data');
+  };
 
   return (
     <div className="my-5 w-full flex justify-center items-center flex-col">
@@ -16,6 +23,7 @@ export default function UploadCSV() {
         <CSVReader
           onUploadAccepted={(results: any) => {
             setUploadedCsv(results.data);
+            handleUpload(results.data);
           }}
           onDragOver={(event: DragEvent) => {
             event.preventDefault();
