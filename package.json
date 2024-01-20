@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
+    "@headlessui/vue": "^1.7.17",
     "@heroicons/react": "^2.1.1",
+    "@heroicons/vue": "^2.1.1",
     "@tanstack/react-query": "^5.17.15",
     "chart.js": "^4.4.1",
     "firebase": "^10.7.2",
@@ -20,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.3",
+    "react-papaparse": "^4.4.0",
     "react-table": "^7.8.0",
     "zod": "^3.22.4"
   },
