@@ -1,10 +1,13 @@
 "use client";
 import { useGetReservations } from "@/useGetReservations";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Home() {
-  // if isSuccess is true, reservations will be an array of hoteldata
   const { data: reservations, isSuccess } = useGetReservations();
+  useEffect(() => {
+    isSuccess && console.log(reservations);
+  }, [isSuccess, reservations]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
