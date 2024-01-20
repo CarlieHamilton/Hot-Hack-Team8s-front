@@ -11,7 +11,8 @@ export default function SortBtn() {
   const [selectedPeriod, setSelectedPeriod] = useState("");
 
   return (
-    <div className="flex justify-center gap-3">
+    <div className="flex justify-center gap-3 my-5">
+      {/* Sort Buttons */}
       <div className="w-72">
         <Listbox value={selectedCity} onChange={setSelectedCity}>
           <div className="relative mt-1">
