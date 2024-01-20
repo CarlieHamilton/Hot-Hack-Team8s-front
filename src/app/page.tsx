@@ -1,13 +1,13 @@
 "use client";
+import { useImportParsedReservations } from "@/importParsedReservations";
 import { useGetReservations } from "@/useGetReservations";
 import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Home() {
   const { data: reservations, isSuccess } = useGetReservations();
-  useEffect(() => {
-    isSuccess && console.log(reservations);
-  }, [isSuccess, reservations]);
+  const { mutate: importParsedReservations } = useImportParsedReservations();
+  isSuccess && console.log(reservations);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

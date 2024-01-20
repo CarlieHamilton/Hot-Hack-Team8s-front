@@ -1,5 +1,4 @@
 import {
-  DocumentReference,
   Timestamp,
   addDoc,
   collection,
@@ -7,8 +6,9 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase.config";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-type HotelData = {
+export interface HotelReservationInput {
   date: Date;
   city: string;
   state: string;
@@ -19,12 +19,17 @@ type HotelData = {
   spend: number;
   roomMarketAverage: number;
   savings: number;
+}
+
+type ImportParsedReservationsProps = {
+  reservations: HotelReservationInput[];
+  bandName: string;
 };
 
-export async function importParsedReservations(
-  reservations: HotelData[],
-  bandName: string,
-) {
+export async function importParsedReservations({
+  bandName,
+  reservations,
+}: ImportParsedReservationsProps) {
   const band = await addDoc(collection(db, "bands"), {
     name: bandName,
     managedBy: doc(db, "users/q8NOvA887Basr18vDdZo"),
@@ -40,4 +45,17 @@ export async function importParsedReservations(
   });
 
   await batch.commit();
+}
+
+export function useImportParsedReservations() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: importParsedReservations,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["getReservation", "q8NOvA887Basr18vDdZo"],
+      });
+    },
+  });
 }
