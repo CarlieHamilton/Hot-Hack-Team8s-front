@@ -1,8 +1,30 @@
 import { db } from "../firebase.config";
-import { collection, query, where, getDocs, doc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  DocumentReference,
+} from "firebase/firestore";
 import { useQuery } from "@tanstack/react-query";
 
-async function getReservations(userId: string) {
+export interface HotelReservationData {
+  date: Date;
+  city: string;
+  state: string;
+  king: number;
+  twin: number;
+  suite: number;
+  roomNightTotal: number;
+  spend: number;
+  roomMarketAverage: number;
+  savings: number;
+  bandName: string;
+  band: DocumentReference;
+}
+
+async function getReservations(userId: string): Promise<HotelReservationData> {
   const user = doc(db, `users/${userId}`);
 
   const bandQuery = query(
@@ -11,21 +33,34 @@ async function getReservations(userId: string) {
   );
   const bandSnapshot = await getDocs(bandQuery);
 
-  const bands = bandSnapshot.docs.map((document) =>
+  const bandRefs = bandSnapshot.docs.map((document) =>
     doc(db, `bands/${document.id}`),
   );
+  const bands = bandSnapshot.docs.map((document) => ({
+    data: document.data(),
+    id: document.id,
+  }));
 
   const reservationQuery = query(
-    collection(db, "hotelreservations"),
-    where("band", "in", bands),
+    collection(db, "hotelReservations"),
+    where("band", "in", bandRefs),
   );
   const reservationSnapshot = await getDocs(reservationQuery);
 
-  const reservations: any[] = reservationSnapshot.docs.map((document) =>
+  const reservations = reservationSnapshot.docs.map((document) =>
     document.data(),
   );
 
-  return reservations;
+  const transformedReservations = reservations.map((reservation) => {
+    const band = bands.find(({ id: bandId }) => bandId === reservation.band.id);
+    return {
+      ...reservation,
+      bandName: band?.data?.name || "unknown",
+      date: reservation.date.toDate(),
+    };
+  });
+
+  return transformedReservations;
 }
 
 export const useGetReservations = () => {
