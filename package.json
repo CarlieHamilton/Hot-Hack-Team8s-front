@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
+    "@headlessui/vue": "^1.7.17",
     "@heroicons/react": "^2.1.1",
+    "@heroicons/vue": "^2.1.1",
     "chart.js": "^4.4.1",
     "firebase": "^10.7.2",
     "firebaseui": "^6.1.0",
