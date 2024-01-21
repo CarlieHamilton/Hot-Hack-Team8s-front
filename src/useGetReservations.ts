@@ -24,7 +24,9 @@ export interface HotelReservationData {
   band: DocumentReference;
 }
 
-async function getReservations(userId: string): Promise<HotelReservationData> {
+async function getReservations(
+  userId: string,
+): Promise<HotelReservationData[]> {
   const user = doc(db, `users/${userId}`);
 
   const bandQuery = query(
@@ -41,11 +43,14 @@ async function getReservations(userId: string): Promise<HotelReservationData> {
     id: document.id,
   }));
 
-  const reservationQuery = query(
+  // const reservationQuery = query(
+  //   collection(db, "hotelReservations"),
+  //   where("band", "in", bandRefs),
+  // );
+  const reservationSnapshot = await getDocs(
     collection(db, "hotelReservations"),
-    where("band", "in", bandRefs),
   );
-  const reservationSnapshot = await getDocs(reservationQuery);
+  debugger;
 
   const reservations = reservationSnapshot.docs.map((document) =>
     document.data(),
