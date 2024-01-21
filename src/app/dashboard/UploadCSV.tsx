@@ -2,12 +2,12 @@
 
 import { DragEvent, useState } from "react";
 import { useCSVReader, formatFileSize } from "react-papaparse";
-import { CSVDataType } from "../utils/HotelData";
+import { CSVDataType, HotelData } from "../utils/HotelData";
 import { DataValidation } from "../utils/DataValidation";
 import { useImportParsedReservations } from "@/importParsedReservations";
 
 export interface UploadCSV {
-  setTableData: () => void;
+  setTableData: (data: HotelData[]) => void;
 }
 
 export default function UploadCSV(props) {
@@ -18,8 +18,7 @@ export default function UploadCSV(props) {
 
   const handleUpload = (data: CSVDataType[]) => {
     const result = DataValidation(data);
-    mutate({ reservations: result, bandName: "Foo Fighters" });
-
+    mutate({ reservations: result, bandName: "Ac/DC" });
     setTableData(result);
   };
 
