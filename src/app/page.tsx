@@ -11,8 +11,8 @@ export default function Home() {
   console.log(error);
 
   return (
-    <main className="flex flex-col flex-grow items-center justify-between p-24">
-      
+    <main className="flex flex-grow h-full items-center justify-between p-24">
+
     </main>
   );
 }
