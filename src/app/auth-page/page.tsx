@@ -14,17 +14,18 @@ export const UserLogin = () => {
     // }, [router]);
 
     return (
-        <div className="relative mx-auto flex h-full max-w-[600px] flex-col justify-center gap-6 object-center pt-12 align-middle">
-            <h1 className="relative text-center text-3xl font-bold uppercase text-orange-600">
+        <div className="relative mx-auto flex h-full w-[50%] flex-col justify-center gap-6 object-center pt-12 align-middle">
+            <h1 className="relative text-center text-3xl  font-bold uppercase text-White">
                 Login{" "}
-                <span className="after:absolute after:bottom-0 after:left-1/2 after:h-[5px] after:w-[100px] after:-translate-x-12 after:translate-y-3 after:bg-orange-600" />
+                <span className="after:absolute after:bottom-0 after:left-1/2 after:h-[5px] after:w-[100px] after:-translate-x-12 after:translate-y-3 after:bg-white" />
             </h1>
-            <form className="flex justify">
+            <form className="flex justify-center align-middle pt-4 flex-col gap-y-6 ">
                 <input
                     type="email"
                     id="email"
                     autoComplete="email"
                     placeholder="EMAIL"
+                    className="rounded-md p-4"
                     // onChange={(event) => setEmail(event.target.value)}
                 />
                 <input
@@ -32,13 +33,15 @@ export const UserLogin = () => {
                     autoComplete="current-password"
                     id="password"
                     placeholder="PASSWORD"
+                    className="rounded-md p-4"
+
                     // onChange={(event) => setPassword(event.target.value)}
                 />
                 <Link href="/forgotPassword" className="underline">
                     FORGOT PASSWORD
                 </Link>
                 <Link href="/dashboard">
-                    <button className="btn btn-outline btn-primary">
+                    <button className="btn btn-outline w-full btn-primary">
                         SIGN IN
                     </button>
                 </Link>
@@ -49,8 +52,8 @@ export const UserLogin = () => {
             </form>
 
             {/* Social SignIn Buttons */}
-            <div className="flex text-center">
-                <p className="uppercase">OR SIGN IN WITH</p>
+            <div className="flex text-center flex-col">
+                <p className="uppercase pb-4">OR SIGN IN WITH</p>
                 <button
                     className="btn btn-outline btn-accent "
                     // onClick={handleRoute}
