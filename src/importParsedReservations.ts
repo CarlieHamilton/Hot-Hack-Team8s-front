@@ -27,7 +27,7 @@ export async function importParsedReservations({
   reservations.forEach(({ date, ...rest }) => {
     batch.set(doc(collection(db, "hotelReservations")), {
       date: Timestamp.fromDate(date),
-      band: doc(db, `users/${band.id}`),
+      band: doc(db, `bands/${band.id}`),
       ...rest,
     });
   });
