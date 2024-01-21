@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="footer items-center absolute bottom-0 p-4 grid grid-cols-2 font-sm text-base-content bg-[#113f67] font-sans tracking-wider h-[1/5]">
+    <footer className="footer absolute bottom-0 px-3 sx:px-24 lg:px-40 py-4 grid grid-cols-2 font-sm text-base-content bg-[#113f67] font-sans tracking-wider h-[1/5] items-start">
       <nav className="text-[#fff]">
         <header className="footer-title text-[#ffff]">Services</header>
         <a className="link link-hover ">Marketing</a>
