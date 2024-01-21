@@ -6,14 +6,21 @@ import { CSVDataType } from "../utils/HotelData";
 import { DataValidation } from "../utils/DataValidation";
 import { useImportParsedReservations } from "@/importParsedReservations";
 
-export default function UploadCSV() {
+export interface UploadCSV {
+  setTableData: () => void;
+}
+
+export default function UploadCSV(props) {
+  const { setTableData } = props;
   const { CSVReader } = useCSVReader();
   const [zoneHover, setZoneHover] = useState(false);
   const { mutate } = useImportParsedReservations();
 
   const handleUpload = (data: CSVDataType[]) => {
     const result = DataValidation(data);
-    mutate({reservations: result, bandName: 'Foo Fighters'});
+    mutate({ reservations: result, bandName: "Foo Fighters" });
+
+    setTableData(result);
   };
 
   return (

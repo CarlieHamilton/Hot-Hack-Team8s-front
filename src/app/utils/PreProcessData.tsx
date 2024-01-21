@@ -71,8 +71,8 @@ export const preprocessData = (data: CSVDataType): HotelData => {
     suite: convertStringToNumber(data[7]),
     roomNightTotal: convertStringToNumber(data[8]),
     spend: convertStringToNumber(removeDollarSymbol(data[9])),
-    roomMarketAverage: convertStringToNumber(removeDollarSymbol(data[10])),
-    savings: convertStringToNumber(removeDollarSymbol(data[11])),
+    roomMarketAverage: data[10] ? convertStringToNumber(removeDollarSymbol(data[10])) : 0,
+    savings: data[11] ? convertStringToNumber(removeDollarSymbol(data[11])) : 0,
   };
 
   return result;
