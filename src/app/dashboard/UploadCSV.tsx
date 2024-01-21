@@ -12,13 +12,15 @@ export default function UploadCSV() {
 
   const handleUpload = (data: CSVDataType[]) => {
     const processedData = preprocessData(data[1]);
-    console.log(processedData, 'process-data');
+    console.log(processedData, "process-data");
   };
 
   return (
-    <div className="my-5 w-full flex justify-center items-center flex-col">
+    <div className="my-5 w-full flex justify-center items-center flex-col bg-slate-50 py-5">
       {/* upload CSV section */}
-      <h2 className="text-xl">Upload your documents here</h2>
+      <h2 className="text-xl font-semibold font-sans tracking-wider">
+        Upload your documents here
+      </h2>
       <div className="flex items-center justify-between flex-col">
         <CSVReader
           onUploadAccepted={(results: any) => {
