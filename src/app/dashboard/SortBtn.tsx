@@ -6,21 +6,20 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import hotelData from "./dummyText";
 
 export default function SortBtn() {
-  const [selectedCity, setSelectedCity] = useState("");
-  const [selectedBand, setSelectedBand] = useState("");
-  const [selectedPeriod, setSelectedPeriod] = useState("");
+  const [selectedCity, setSelectedCity] = useState("Choose City");
+  const [selectedBand, setSelectedBand] = useState("Choose band");
+  const [selectedPeriod, setSelectedPeriod] = useState("Choose Period");
 
   return (
-    <div className="flex justify-center gap-3 my-5">
-      {/* Sort Buttons */}
-      <div className="w-72">
+    <div className="flex flex-col items-center justify-center md:flex-row gap-4 mt-3 ">
+      <div className="w-40">
         <Listbox value={selectedCity} onChange={setSelectedCity}>
-          <div className="relative mt-1">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-              <span className="block truncate">Choose city</span>
+          <div className="relative mt-1 w-30 ">
+            <Listbox.Button className=" relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+              <span className="block truncate font-sans">{selectedCity}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="h-5 w-5 text-[#113f67]"
                   aria-hidden="true"
                 />
               </span>
@@ -31,13 +30,15 @@ export default function SortBtn() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 bg-[#ffff] ring-black/5 focus:outline-none sm:text-sm">
                 {hotelData.map((data, Idx) => (
                   <Listbox.Option
                     key={Idx}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                        active
+                          ? " bg-[#dbeafe] text-black-800 "
+                          : "text-gray-900 -z-0"
                       }`
                     }
                     value={data.city}
@@ -66,14 +67,14 @@ export default function SortBtn() {
         </Listbox>
       </div>
 
-      <div className="w-72">
+      <div className="w-40">
         <Listbox value={selectedBand} onChange={setSelectedBand}>
           <div className="relative mt-1">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-              <span className="block truncate">Choose band</span>
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-[#ffff] py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+              <span className="block truncate">{selectedBand}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="h-5 w-5 text-[#113f67]"
                   aria-hidden="true"
                 />
               </span>
@@ -84,13 +85,15 @@ export default function SortBtn() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#ffff] py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
                 {hotelData.map((data, Idx) => (
                   <Listbox.Option
                     key={Idx}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                        active
+                          ? "bg-[#dbeafe] text-black-800 "
+                          : "text-gray-900 "
                       }`
                     }
                     value={data.band}
@@ -119,14 +122,14 @@ export default function SortBtn() {
         </Listbox>
       </div>
 
-      <div className="w-72">
+      <div className="w-40">
         <Listbox value={selectedPeriod} onChange={setSelectedPeriod}>
           <div className="relative mt-1">
             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-              <span className="block truncate">Choose period</span>
+              <span className="block truncate">{selectedPeriod}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
+                  className="h-5 w-5 text-[#113f67]"
                   aria-hidden="true"
                 />
               </span>
@@ -143,7 +146,7 @@ export default function SortBtn() {
                     key={Idx}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                        active ? "bg-[#dbeafe] text-black-800" : "text-gray-900"
                       }`
                     }
                     value={data.city}
@@ -158,7 +161,7 @@ export default function SortBtn() {
                           {data.city}
                         </span>
                         {selected ? (
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3  text-amber-600">
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />
                           </span>
                         ) : null}

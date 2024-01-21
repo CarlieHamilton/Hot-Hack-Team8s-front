@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background-color: #fafafa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,12 +19,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  background: var(--background-color);
+  height: 100vh;
+  width: 100vw;
 }
 
 @layer utilities {
