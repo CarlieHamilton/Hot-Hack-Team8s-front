@@ -1,4 +1,5 @@
 import { HotelReservationData } from "@/useGetReservations";
+import SortBtn from "./dashboard/SortBtn";
 
 export interface TableProps {
   reservations: HotelReservationData[];
@@ -7,11 +8,10 @@ export interface TableProps {
 export default function Table(props: TableProps) {
   const { reservations } = props;
 
-  console.log(reservations, 'reservations-table');
-
   return (
-    <div className="flex flex-col items-center mt-5">
+    <div className="flex flex-col items-center mt-8 mb-10">
       <h1 className="">Result</h1>
+      <SortBtn />
       <div className="overflow-x-auto my-5">
         <table className="table">
           <thead>
