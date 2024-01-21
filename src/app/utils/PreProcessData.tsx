@@ -1,6 +1,6 @@
 import { CSVDataType, HotelData } from "./HotelData";
 
-const monthMap: { [key: string]: number } = {
+export const monthMap: { [key: string]: number } = {
   January: 0,
   February: 1,
   March: 2,
@@ -40,6 +40,9 @@ const createDateFromInfo = (day: string, date: number, month: number): Date => {
 };
 
 const removeDollarSymbol = (input: string | number):string => {
+  if (input === '') {
+    return '0';
+  }
   return input.toString().replace(/\$/g, '');
 }
 
@@ -52,8 +55,6 @@ export const preprocessData = (data: CSVDataType): HotelData => {
   if (!(data[2] in monthMap)) {
     throw Error(`Invalid month ${data[2]}`);
   }
-
-  console.log(data, 'data');
 
   const date = createDateFromInfo(
     data[0].toString(),
@@ -73,8 +74,6 @@ export const preprocessData = (data: CSVDataType): HotelData => {
     roomMarketAverage: convertStringToNumber(removeDollarSymbol(data[10])),
     savings: convertStringToNumber(removeDollarSymbol(data[11])),
   };
-
-  console.log(result, 'pre-result');
 
   return result;
 };

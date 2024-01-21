@@ -7,22 +7,10 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-export interface HotelReservationInput {
-  date: Date;
-  city: string;
-  state: string;
-  king: number;
-  twin: number;
-  suite: number;
-  roomNightTotal: number;
-  spend: number;
-  roomMarketAverage: number;
-  savings: number;
-}
+import { HotelData } from "./app/utils/HotelData";
 
 type ImportParsedReservationsProps = {
-  reservations: HotelReservationInput[];
+  reservations: HotelData[];
   bandName: string;
 };
 

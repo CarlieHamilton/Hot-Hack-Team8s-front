@@ -3,16 +3,17 @@
 import { DragEvent, useState } from "react";
 import { useCSVReader, formatFileSize } from "react-papaparse";
 import { CSVDataType } from "../utils/HotelData";
-import { preprocessData } from "../utils/PreProcessData";
+import { DataValidation } from "../utils/DataValidation";
+import { useImportParsedReservations } from "@/importParsedReservations";
 
 export default function UploadCSV() {
   const { CSVReader } = useCSVReader();
   const [zoneHover, setZoneHover] = useState(false);
-  const [uploadedCsv, setUploadedCsv] = useState([]);
+  const { mutate } = useImportParsedReservations();
 
   const handleUpload = (data: CSVDataType[]) => {
-    const processedData = preprocessData(data[1]);
-    console.log(processedData, 'process-data');
+    const result = DataValidation(data);
+    mutate({reservations: result, bandName: 'Foo Fighters'});
   };
 
   return (
@@ -22,7 +23,6 @@ export default function UploadCSV() {
       <div className="flex items-center justify-between flex-col">
         <CSVReader
           onUploadAccepted={(results: any) => {
-            setUploadedCsv(results.data);
             handleUpload(results.data);
           }}
           onDragOver={(event: DragEvent) => {
