@@ -50,7 +50,6 @@ async function getReservations(
   const reservationSnapshot = await getDocs(
     collection(db, "hotelReservations"),
   );
-  debugger;
 
   const reservations = reservationSnapshot.docs.map((document) =>
     document.data(),

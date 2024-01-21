@@ -15,6 +15,9 @@ export default function Navbar() {
           <p className="text-white hover:text-gray-200 hover:underline">
             <Link href="/dashboard">Dashboard</Link>
           </p>
+          <p className="text-white hover:text-gray-200 hover:underline">
+            <Link href="/history-data">History</Link>
+          </p>
         </div>
       </nav>
     </header>
