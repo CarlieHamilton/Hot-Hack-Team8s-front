@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body>
+        <body className="">
           <Navbar />
           {children}
           <Footer />
